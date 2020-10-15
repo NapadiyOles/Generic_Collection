@@ -29,6 +29,37 @@ namespace Generic_Stack
 
         public event NotifyCollectionChangedEventHandler CollectionChanged;
 
+        public Stack(){}
+
+        public Stack(ICollection collection)
+        {
+
+            foreach (var item in collection)
+            {
+                T Data;
+                try
+                {
+                    Data = (T) item;
+                }
+                catch (InvalidCastException)
+                {
+                    Data = default;
+                }
+
+                Node<T> node = new Node<T>(Data);
+
+                if (Head != null)
+                    node.Next = Head;
+
+                else
+                    Tail = node;
+
+                Head = node;
+            }
+
+            Count = collection.Count;
+        }
+
         /// <summary>
         /// Inserts an object at the top of the Stack.
         /// </summary>
@@ -129,7 +160,7 @@ namespace Generic_Stack
         public void CopyTo(Array array, int index)
         {
             for (Node<T> Node = Head; Node != null; Node = Node.Next)
-                array.SetValue(Node.Data, index++);
+                array.SetValue(Node.Data, (Count - 1) - index++);
         }
 
         public struct Enumarator : IEnumerator<T>
