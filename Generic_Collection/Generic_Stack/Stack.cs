@@ -163,7 +163,7 @@ namespace Generic_Stack
                 array.SetValue(Node.Data, (Count - 1) - index++);
         }
 
-        public struct Enumarator : IEnumerator<T>
+        public struct Enumerator : IEnumerator<T>
         {
             public T Current { get; private set; }
 
@@ -173,7 +173,7 @@ namespace Generic_Stack
 
             private Node<T> Node;
 
-            public Enumarator(Stack<T> Stack)
+            public Enumerator(Stack<T> Stack)
             {
                 this.Stack = Stack;
 
@@ -211,7 +211,7 @@ namespace Generic_Stack
 
         public IEnumerator<T> GetEnumerator()
         {
-            return new Enumarator(this);
+            return new Enumerator(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()

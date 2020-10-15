@@ -145,5 +145,18 @@ namespace Stack_Tests
 
             Assert.AreEqual(expectedArray, actualArray);
         }
+
+        [TestCase(new int[]{1, 2, 3})]
+        public void EnumeratorCheck_ReturnsActualElementsOfTheStack(int[] expectedArray)
+        {
+            _ints = new Stack<int>(expectedArray);
+
+            int index = 0;
+
+            foreach (var item in _ints)
+            {
+                Assert.AreEqual(expectedArray[expectedArray.Length - ++index], item);
+            }
+        }
     }
 }

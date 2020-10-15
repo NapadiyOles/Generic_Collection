@@ -28,14 +28,14 @@ namespace Lab1_Generic
                     Console.WriteLine($"Info:\n{GetInfo}\n");
 
                 Console.Write(
-                    $"Options:\n" +
+                    "Options:\n" +
                     $"{(uint)Options.Push} - Add an item\n" +
                     $"{(uint)Options.Pop} - Remove an item\n" +
                     $"{(uint)Options.Peek} - Show the head item\n" +
                     $"{(uint)Options.Swap} - Swap two latest items\n" +
                     $"{(uint)Options.Show} - Show the stack\n" +
                     $"{(uint)Options.Exit} - Exit\n\n" +
-                    $"Choose option: "
+                    "Choose option: "
                 );
 
                 while (!uint.TryParse(Console.ReadLine(), out Option) || Option > 6)
